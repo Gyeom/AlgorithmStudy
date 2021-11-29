@@ -15,4 +15,24 @@ class Solution {
     }
 }
 
+// using HashMap
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        HashMap<Integer, Integer> keyToValue = new HashMap<Integer, Integer>();
+        int numsLength = nums.length;
+        int [] result = new int[2];
+        
+        for(int i = 0; i < numsLength; i++){
+            int remain = target - nums[i];
+            if(keyToValue.containsKey(remain)){
+                result[0] = keyToValue.get(remain);
+                result[1] = i;
+                return result;
+            }
+            keyToValue.put(nums[i], i);
+        }
+        return null;
+    }
+}
+
 // https://itkevin.tistory.com/28
