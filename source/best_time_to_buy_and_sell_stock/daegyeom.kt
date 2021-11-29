@@ -5,11 +5,11 @@ import kotlin.math.min
 
 fun maxProfit(prices: IntArray): Int {
     var maxProfit = 0
-    var minValue = prices[0]
+    var buyPrice = prices[0]
     for (index in 1 until prices.count()) {
-        val buyValue = prices[index]
-        maxProfit = max(buyValue - minValue, maxProfit)
-        minValue = min(minValue, buyValue)
+        val sellPrice = prices[index]
+        maxProfit = max(sellPrice - buyPrice, maxProfit)
+        buyPrice = min(buyPrice, sellPrice)
     }
     return maxProfit
 }
