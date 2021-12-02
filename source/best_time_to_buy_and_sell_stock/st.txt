@@ -1,0 +1,17 @@
+class Solution {
+    public int maxProfit(int[] prices) {
+        
+        int lastDay = prices.length;
+        int bestProfit = 0;
+        int min = 10000;
+        
+        for(int day = 0; day < lastDay; day++){
+            if(prices[day] < min){
+                min = prices[day];
+            }else{
+                bestProfit = Math.max(bestProfit, prices[day]-min);
+            }
+        }
+        return bestProfit;
+    }
+}
