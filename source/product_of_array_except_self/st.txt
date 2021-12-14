@@ -1,0 +1,30 @@
+class Solution {
+    public int[] productExceptSelf(int[] nums) {
+        int numsLength = nums.length;
+        int[] result = new int[numsLength];
+        ArrayList<Integer> zeroIdxArr = new ArrayList<Integer>();
+        int multiVal = 1;
+
+        for(int idx = 0; idx < numsLength; idx++){
+            result[idx] = 0;
+            if(nums[idx] == 0){
+                zeroIdxArr.add(idx);
+            }else{
+                multiVal *= nums[idx];
+            }
+        }
+        int zeroIdxArrSize = zeroIdxArr.size();
+
+        if(zeroIdxArrSize > 1) {
+            return result;
+        } else if(zeroIdxArrSize == 1){
+            int idx = zeroIdxArr.get(0);
+            result[idx] = multiVal;
+        } else{
+            for(int idx =0; idx < numsLength; idx++){
+                result[idx] = multiVal / nums[idx];
+            }
+        }
+        return result;
+    }
+}
