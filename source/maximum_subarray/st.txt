@@ -1,0 +1,18 @@
+class Solution {
+    public int maxSubArray(int[] nums) {
+        int numsLength = nums.length;
+        int max = nums[0];
+        int sumArrayVal = nums[0];
+        for(int idx = 1; idx < numsLength; idx++){
+            if(nums[idx] < sumArrayVal + nums[idx]){
+               sumArrayVal = sumArrayVal + nums[idx];
+            } else{
+               sumArrayVal = nums[idx]; 
+            }
+            if(max < sumArrayVal){
+                max = sumArrayVal;
+            }
+        }
+        return max;
+    }
+}
